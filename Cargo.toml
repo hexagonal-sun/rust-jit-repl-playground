@@ -1,5 +1,5 @@
 [package]
-name = "cranelift-jit-demo"
+name = "rust-jit-repl"
 version = "0.0.0"
 authors = ["The Cranelift Project Developers"]
 license = "Apache-2.0 WITH LLVM-exception"
@@ -12,3 +12,4 @@ peg = "0.6"
 cranelift = "0.85.1"
 cranelift-module = "0.85.1"
 cranelift-jit = "0.85.1"
+rustyline = "10.0.0"

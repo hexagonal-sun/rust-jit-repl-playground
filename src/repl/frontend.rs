@@ -20,21 +20,11 @@ pub enum Expr {
 }
 
 peg::parser!(pub grammar parser() for str {
-    pub rule function() -> (String, Vec<String>, String, Vec<Expr>)
-        = [' ' | '\t' | '\n']* "fn" _ name:identifier() _
-        "(" params:((_ i:identifier() _ {i}) ** ",") ")" _
-        "->" _
-        "(" returns:(_ i:identifier() _ {i}) ")" _
-        "{" _ "\n"
-        stmts:statements()
-        _ "}" _ "\n" _
-        { (name, params, returns, stmts) }
-
     rule statements() -> Vec<Expr>
         = s:(statement()*) { s }
 
-    rule statement() -> Expr
-        = _ e:expression() _ "\n" { e }
+    pub rule statement() -> Expr
+        = _ e:expression() _ { e }
 
     rule expression() -> Expr
         = if_else()
